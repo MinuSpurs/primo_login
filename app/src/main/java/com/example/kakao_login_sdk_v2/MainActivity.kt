@@ -9,15 +9,30 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause.*
+import com.example.kakao_login_sdk_v2.databinding.ActivityMainBinding
+import com.navercorp.nid.NaverIdLoginSDK
+import com.navercorp.nid.oauth.NidOAuthLogin
+import com.navercorp.nid.oauth.OAuthLoginCallback
+import com.navercorp.nid.profile.NidProfileCallback
+import com.navercorp.nid.profile.data.NidProfileResponse
+
 import com.kakao.sdk.common.KakaoSdk
 import com.kakao.sdk.user.UserApiClient
 
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = this::class.simpleName
+
+    private lateinit var binding: ActivityMainBinding
+    private var email: String = ""
+    private var gender: String = ""
+    private var name: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val kakao_login_button: ImageButton = findViewById(R.id.kakao_login_button)
+
 
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {

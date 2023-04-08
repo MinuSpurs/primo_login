@@ -30,7 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
+
 
 dependencies {
 
@@ -45,8 +49,10 @@ dependencies {
     implementation "com.kakao.sdk:v2-share:2.13.0" // 메시지(카카오톡 공유)
     implementation "com.kakao.sdk:v2-navi:2.13.0" // 카카오내비
     implementation "com.kakao.sdk:v2-friend:2.13.0" // 카카오톡 소셜 피커, 리소스 번들 파일 포함
-    implementation 'mysql:mysql-connector-java:8.0.26'
     implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+    implementation 'mysql:mysql-connector-java:8.0.26'
+    implementation 'com.navercorp.nid:oauth:5.1.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
